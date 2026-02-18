@@ -23,13 +23,13 @@ jobs:
       # Run ZAP Baseline Scan
       - name: Run OWASP ZAP Baseline Scan
         run: |
-            docker run --network="host" \
-            - u root \
+            docker run --network=host -u root \
             -v ${{ github.workspace }}:/zap/wrk/:rw \
             ghcr.io/zaproxy/zaproxy:stable \
             zap-baseline.py \
             -t http://localhost:3000 \
             -r zap-report.html
+
 
       # Upload report as artifact
       - name: Upload ZAP Report
